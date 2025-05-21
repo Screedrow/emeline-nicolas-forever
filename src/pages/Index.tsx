@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Countdown from '@/components/Countdown';
 import { Button } from '@/components/ui/button'; // shadcn button
@@ -5,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Index = () => {
-  const heroImageUrl = "https://scontent-cdg4-3.cdninstagram.com/v/t51.29350-15/412281888_1062739884919986_108142507212831925_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjE0NDB4MTgwMC5zZHIuZjI5MzUwLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-cdg4-3.cdninstagram.com&_nc_cat=106&_nc_oc=Q6cZ2QHt5m7vqkFAqO_1EiQHh7s8RF_XOx6vklJdIa0QfDThsKKjc9DLE_ZirPLr-qn0rmk&_nc_ohc=RZU1lPQQZHoQ7kNvwHn3GlR&_nc_gid=vwdIeqykpZtGO3nWDIB-SQ&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzI2NDI2NTQ5OTU3NDc4MTE0NQ%3D%3D.3-ccb7-5&oh=00_AfJ5u5wMQ72maMdsPJ_W7Zm4fOphVwUqPB9a87R5nL6mOA&oe=6833CBA3&_nc_sid=7a9f4b";
+  const heroImageUrl = "/lovable-uploads/ChatGPT Image 21 mai 2025, 19_32_54.png"; // Updated image path
   const weddingDate = "2025-10-12T00:00:00"; // Format YYYY-MM-DDTHH:mm:ss
 
   return (
@@ -63,3 +64,4 @@ const Index = () => {
 };
 
 export default Index;
+
