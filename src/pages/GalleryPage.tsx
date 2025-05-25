@@ -17,7 +17,7 @@ const GalleryPage: React.FC = () => {
         {placeholderImages.map((_, index) => (
           <div 
             key={index} 
-            className="aspect-square bg-secondary rounded-lg shadow-md flex flex-col items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300"
+            className="aspect-square bg-background rounded-lg shadow-md flex flex-col items-center justify-center p-4 hover:shadow-xl transition-shadow duration-300"
           >
             <Camera className="w-12 h-12 text-secondary-foreground/50 mb-2" />
             <p className="text-sm text-secondary-foreground">Photo {index + 1}</p>

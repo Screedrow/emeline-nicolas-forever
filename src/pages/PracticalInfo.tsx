@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Car, ParkingCircle, Shirt, BedDouble } from 'lucide-react';
+import {ParkingCircle, Shirt, BedDouble, Smartphone } from 'lucide-react';
 
 interface InfoSectionProps {
   title: string;
@@ -25,31 +24,35 @@ const PracticalInfo: React.FC = () => {
   return (
     <div className="animate-fade-in-up">
       <h1 className="text-4xl font-serif text-primary text-center mb-12">Informations Pratiques</h1>
-      <p className="text-lg text-center text-foreground/80 mb-12 max-w-2xl mx-auto">
+      <p className="text-lg text-center text-foreground/80 mb-12 max-w-2xl mx-auto md:whitespace-nowrap">
         Quelques détails pour vous aider à préparer votre venue et profiter pleinement de la fête.
       </p>
       <div className="grid md:grid-cols-2 gap-8">
-        <InfoSection title="Transport & Accès" icon={Car}>
-          <p><strong>Lieu de la cérémonie :</strong> [Adresse Mairie]</p>
-          <p><strong>Lieu de la réception :</strong> [Adresse Réception]</p>
-          <p>Des indications plus précises et options de covoiturage seront communiquées prochainement.</p>
+        <InfoSection title="Dress Code" icon={Shirt}>
+          <p className="text-justify">Nous vous invitons à vous parer de vos plus beaux atours ! 
+          Les tenues de cérémonie sont vivement conseillées. Évidemment, le blanc est réservé aux stars du jour !
+          </p>
         </InfoSection>
         <InfoSection title="Parking" icon={ParkingCircle}>
-          <p>Un parking sera disponible à proximité du lieu de réception. Suivez la signalétique.</p>
-          <p>Pour la mairie, veuillez privilégier les parkings publics environnants.</p>
+          <p className="text-justify">Un parking sera disponible à proximité du lieu de réception. Suivez la signalétique. 
+            Pour la mairie, veuillez privilégier les parkings publics environnants.
+          </p>
         </InfoSection>
-        <InfoSection title="Dress Code" icon={Shirt}>
-          <p>Nous vous invitons à vous parer de vos plus beaux atours !</p>
-          <p>Le thème est chic et élégant. N'hésitez pas à ajouter une touche de doré ou de vert amande si le coeur vous en dit.</p>
+        <InfoSection title="Flash info !" icon={Smartphone}>
+          <p className="text-justify" style={{ fontWeight: 'bold' }}>Cérémonies déconnectées</p>
+          <p className="text-justify">Pour pouvoir pleinement profiter des cérémonies, 
+            les téléphones et appareils photo personnels devront être rangés! 
+            Un photographe et un vidéaste seront présents pour immortaliser tous les moments importants. 
+            Ne vous inquiétez pas, l'ensemble des photos et vidéos seront disponibles après le mariage !</p>
         </InfoSection>
         <InfoSection title="Hébergements" icon={BedDouble}>
-          <p>Pour nos invités venant de loin, voici quelques suggestions d'hôtels et chambres d'hôtes à proximité :</p>
+          <p className="text-justify">Pour nos invités venant de loin, voici quelques suggestions d'hôtels et chambres d'hôtes à proximité :</p>
           <ul className="list-disc list-inside ml-4">
             <li>[Nom Hôtel 1 + lien/contact]</li>
             <li>[Nom Chambre d'hôte 1 + lien/contact]</li>
             <li>Pensez également à AirBnB.</li>
           </ul>
-          <p>Nous vous conseillons de réserver rapidement.</p>
+          <p className="text-justify">Nous vous conseillons de réserver rapidement.</p>
         </InfoSection>
       </div>
     </div>

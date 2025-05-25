@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarCheck2, Church, Gem, MapPin, GlassWater, Utensils, Moon, Wine } from 'lucide-react'; // Example icons
+import { CalendarCheck2, Church, MapPin, Utensils, Moon, Wine } from 'lucide-react'; // Example icons
 
 interface EventItemProps {
   time: string;
