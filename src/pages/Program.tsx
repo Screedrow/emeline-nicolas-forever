@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { CalendarCheck2, MapPin, GlassWater, Utensils, Moon } from 'lucide-react'; // Example icons
+import { CalendarCheck2, Church, Gem, MapPin, GlassWater, Utensils, Moon, Wine } from 'lucide-react'; // Example icons
 
 interface EventItemProps {
   time: string;
@@ -39,35 +38,44 @@ const EventItem: React.FC<EventItemProps> = ({ time, title, description, locatio
 const Program: React.FC = () => {
   const events = [
     {
-      time: "15:00",
+      time: "14:00",
       title: "Cérémonie Civile",
-      description: "Union à la mairie de [Ville].",
-      location: "Mairie de [Ville], [Adresse]",
-      locationLink: "#", // Replace with actual Google Maps link
+      description: "Union à la mairie de Saint-Sulpice-la-Pointe.",
+      location: "Mairie de Saint-Sulpice-la-Pointe, Parc Georges Spénale, 4 Av. Vialas, 81370 Saint-Sulpice-la-Pointe",
+      locationLink: "https://www.google.com/maps/place/H%C3%B4tel+de+Ville/@43.7756313,1.6833695,17z/data=!3m1!4b1!4m6!3m5!1s0x12ae832be28fbba3:0x6a61d6f6b2c0624!8m2!3d43.7756313!4d1.6833695!16s%2Fg%2F11j0_dxpmx?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D", // Replace with actual Google Maps link
       icon: CalendarCheck2,
+
     },
     {
-      time: "17:00",
+      time: "15:00",
+      title: "Cérémonie Religieuse",
+      description: "Union à l'église de Saint-Sulpice-la-Pointe.",
+      location: "Église Saint-Sulpice, place de l'église, 81370 Saint-Sulpice-la-Pointe",
+      locationLink: "https://www.google.com/maps/place/%C3%89glise+Saint-Sulpice+de+Saint-Sulpice-la-Pointe/@43.7750099,1.6839529,17z/data=!4m14!1m7!3m6!1s0x12ae82a63daa3743:0xb4594e9bf3801470!2s%C3%89glise+Saint-Sulpice+de+Saint-Sulpice-la-Pointe!8m2!3d43.7750061!4d1.6865278!16s%2Fg%2F11bc58nlvv!3m5!1s0x12ae82a63daa3743:0xb4594e9bf3801470!8m2!3d43.7750061!4d1.6865278!16s%2Fg%2F11bc58nlvv?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D", // Replace with actual Google Maps link
+      icon: Church,
+    },
+    {
+      time: "18:00",
       title: "Vin d'Honneur",
-      description: "Célébrons ensemble avec un verre à [Lieu du Vin d'Honneur].",
-      location: "[Lieu du Vin d'Honneur], [Adresse]",
-      locationLink: "#",
-      icon: GlassWater,
+      description: "Célébrons ensemble avec un verre au Château de la Busquette.",
+      location: "Château de la Busquette, 577 Chem. de la Busquette, 31340 La Magdelaine-sur-Tarn",
+      locationLink: "https://www.google.com/maps/place/Ch%C3%A2teau+de+la+Busquette/@43.8196814,1.5288988,17z/data=!3m1!4b1!4m9!3m8!1s0x12ac2105fef89d2f:0x54076adc0f48b5f2!5m2!4m1!1i2!8m2!3d43.8196776!4d1.5314737!16s%2Fg%2F11kblcf_dz?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D",
+      icon: Wine,
     },
     {
-      time: "19:00",
+      time: "20:00",
       title: "Réception & Dîner",
       description: "Place au dîner et à la fête jusqu'au bout de la nuit !",
-      location: "[Lieu de Réception], [Adresse]",
-      locationLink: "#",
+      location: "Château de la Busquette, 577 Chem. de la Busquette, 31340 La Magdelaine-sur-Tarn",
+      locationLink: "https://www.google.com/maps/place/Ch%C3%A2teau+de+la+Busquette/@43.8196814,1.5288988,17z/data=!3m1!4b1!4m9!3m8!1s0x12ac2105fef89d2f:0x54076adc0f48b5f2!5m2!4m1!1i2!8m2!3d43.8196776!4d1.5314737!16s%2Fg%2F11kblcf_dz?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D",
       icon: Utensils,
     },
     {
       time: " lendemain - 11:00",
       title: "Brunch Convivial",
       description: "Pour ceux qui le souhaitent, prolongeons les festivités autour d'un brunch.",
-      location: "[Lieu du Brunch], [Adresse]",
-      locationLink: "#",
+      location: "Château de la Busquette, 577 Chem. de la Busquette, 31340 La Magdelaine-sur-Tarn",
+      locationLink: "https://www.google.com/maps/place/Ch%C3%A2teau+de+la+Busquette/@43.8196814,1.5288988,17z/data=!3m1!4b1!4m9!3m8!1s0x12ac2105fef89d2f:0x54076adc0f48b5f2!5m2!4m1!1i2!8m2!3d43.8196776!4d1.5314737!16s%2Fg%2F11kblcf_dz?entry=ttu&g_ep=EgoyMDI1MDUyMS4wIKXMDSoASAFQAw%3D%3D",
       icon: Moon, // Using Moon for "next day" / evening before
     },
   ];

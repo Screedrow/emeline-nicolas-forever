@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Countdown from '@/components/Countdown';
 import { Button } from '@/components/ui/button'; // shadcn button
@@ -6,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 const Index = () => {
-  const heroImageUrl = "/lovable-uploads/ChatGPT Image 21 mai 2025, 19_32_54.png"; // Updated image path
-  const weddingDate = "2025-10-12T00:00:00"; // Format YYYY-MM-DDTHH:mm:ss
+  const heroImageUrl = "/lovable-uploads/Index_img_couple.jpeg"; // Updated image path
+  const weddingDate = "2026-07-04T12:00:00"; // Format YYYY-MM-DDTHH:mm:ss
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -44,7 +43,7 @@ const Index = () => {
       </section>
 
       {/* Call to action for other pages - example for Program */}
-      <section className="py-16 md:py-24 bg-secondary w-full">
+      <section className="py-16 md:py-24 bg-background border-2 border-primary w-full">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-secondary-foreground mb-6 animate-fade-in-up">
             Découvrez le Programme

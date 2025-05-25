@@ -6,7 +6,7 @@ const RSVP: React.FC = () => {
     <div className="animate-fade-in-up text-center">
       <h1 className="text-4xl font-serif text-primary mb-12">RSVP</h1>
       <p className="text-lg text-foreground/90 mb-8">
-        Merci de nous confirmer votre présence avant le [Date Limite RSVP].
+        Merci de nous confirmer votre présence avant le 15 avril 2026.
       </p>
       <p className="text-foreground/80">
         Le formulaire de RSVP sera disponible ici très prochainement.
@@ -16,7 +16,7 @@ const RSVP: React.FC = () => {
         <h2 className="text-2xl font-serif text-primary mb-6">Formulaire de Réponse (Bientôt)</h2>
         <div className="space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-left text-foreground/80">Nom complet</label>
+            <label htmlFor="name" className="block text-sm font-medium text-left text-foreground/80">Prénom</label>
             <input type="text" name="name" id="name" disabled className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 cursor-not-allowed" />
           </div>
           <div>
@@ -24,7 +24,7 @@ const RSVP: React.FC = () => {
             <input type="number" name="guests" id="guests" disabled className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 cursor-not-allowed" />
           </div>
           <button type="submit" disabled className="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary/50 cursor-not-allowed">
-            Envoyer (Indisponible)
+            Rechercher (Indisponible)
           </button>
         </div>
       </div>

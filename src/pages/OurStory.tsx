@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // One of the uploaded images
@@ -11,22 +10,28 @@ const OurStory: React.FC = () => {
       
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6 text-lg text-foreground/90">
-          <p>
-            Notre aventure a commencé de la manière la plus inattendue qui soit... (Racontez ici votre rencontre). 
-            Ce fut le début d'une belle complicité, de rires partagés et d'une évidence qui grandissait jour après jour.
+          <p className="text-justify">
+          Notre aventure a commencé de la manière la plus moderne qui soit : sur Internet! 
+          Un simple message sur Facebook, un compliment déguisé sous une passion commune. 
+          Ce fut le début d’une belle complicité, de rires partagés et d’une évidence qui grandissait jour après jour.
           </p>
-          <p>
-            Les étapes se sont enchaînées naturellement, des premiers voyages aux petites attentions du quotidien.
-            Chaque moment passé ensemble renforçait notre amour et notre désir de construire un avenir commun.
-            (Ajoutez des anecdotes, des souvenirs marquants).
+          <p className="text-justify">
+          Les étapes se sont enchaînées naturellement, des petites attentions du quotidien aux premiers voyages. 
+          Chaque moment passé ensemble renforçait notre amour et notre désir de construire un avenir commun. 
+          Très vite, nous avons emménagé ensemble, nous nous sommes pacsés au bout de trois ans, dans l’attente du mariage. 
+          Mais Emeline ne se doutait pas que celui-ci allait arriver bien plus vite qu’elle ne l’imaginait!
           </p>
-          <p>
-            Puis vint la demande... (Décrivez les fiançailles). Un moment magique qui a scellé notre promesse et ouvert
-            le chemin vers ce grand jour que nous avons tant hâte de partager avec vous.
+          <p className="text-justify">
+          2024, voyage à l’autre bout du monde, dans le pays de l’Oncle Sam : un road trip de rêve! 
+          Des boulevards vertigineux de San Francisco aux paysages magnifiques des différents canyons, 
+          ce merveilleux séjour s’est terminé sur la plage de Santa Monica, où le panorama utopique laissa place à l’émotion.
+          Une séance photo improvisée, comme on en avait déjà fait au fil de notre parcours, s’est transformée en une demande solennelle, 
+          bercée par les vagues de l’océan, qui, comme une berceuse, murmuraient à nos oreilles ce que l’amour avait de plus beau à nous offrir. 
+          Un moment magique qui a scellé notre promesse et ouvert le chemin vers ce grand jour que nous avons tant hâte de partager avec vous.
           </p>
-          <p>
-            Nous sommes tellement heureux de pouvoir bientôt célébrer notre amour entourés de nos familles et amis.
-            Merci d'être les témoins de notre bonheur !
+          <p className="text-justify">
+          C’est une immense joie pour nous de bientôt célébrer notre amour, entourés de ceux qui comptent le plus. 
+          Merci de faire partie de ce moment précieux et d’être les témoins de ce bonheur.
           </p>
         </div>
         <div>
