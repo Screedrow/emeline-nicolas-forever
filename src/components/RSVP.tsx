@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 const RSVP: React.FC = () => {
   const [firstName, setFirstName] = useState('');
@@ -20,21 +21,59 @@ const RSVP: React.FC = () => {
     setSelectedGuest(null);
     setFamily([]);
     setFamilyError('');
+    
     try {
-      const res = await fetch('/api/search-guest.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setSearchResults(data);
+      console.log('Test de connexion Supabase...');
+      
+      // Test 1: Vérifier que la table existe
+      const { data: tableInfo, error: tableError } = await supabase
+        .from('guests')
+        .select('id')
+        .limit(1);
+      
+      console.log('Test table guests:', tableInfo);
+      console.log('Erreur table:', tableError);
+      
+      // Test 2: Compter le nombre total d'enregistrements
+      const { count, error: countError } = await supabase
+        .from('guests')
+        .select('*', { count: 'exact', head: true });
+      
+      console.log('Nombre total d\'enregistrements:', count);
+      console.log('Erreur count:', countError);
+      
+      // Test 3: Recherche simple
+      const { data, error: searchError } = await supabase
+        .from('guests')
+        .select('*')
+        .ilike('first_name', `%${firstName}%`);
+      
+      console.log('Résultats recherche:', data);
+      console.log('Erreur recherche:', searchError);
+      
+      if (searchError) {
+        setError(`Erreur: ${searchError.message}`);
+        return;
+      }
+      
+      if (data && data.length > 0) {
+        // Formater les résultats comme attendu
+        const formatted = data.map(guest => ({
+          id: guest.id,
+          display_name: `${guest.first_name} ${guest.last_name}`,
+          family_group_id: guest.family_group_id
+        }));
+        
+        setSearchResults(formatted);
         setHasSearched(true);
       } else {
-        setError(data.error || 'Erreur lors de la recherche.');
+        setSearchResults([]);
+        setHasSearched(true);
       }
+      
     } catch (err) {
-      setError('Erreur réseau.');
+      console.error('Erreur détaillée:', err);
+      setError(`Erreur: ${err instanceof Error ? err.message : 'Erreur inconnue'}`);
     } finally {
       setLoading(false);
     }
@@ -45,23 +84,36 @@ const RSVP: React.FC = () => {
     setLoadingFamily(true);
     setFamily([]);
     setFamilyError('');
+    
     try {
-      const res = await fetch('/api/get-family.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ familyGroupId: guest.family_group_id }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setFamily(data);
-      } else {
-        setFamilyError(data.error || 'Erreur lors de la récupération de la famille.');
+      console.log('Chargement famille pour:', guest.display_name, 'Groupe:', guest.family_group_id);
+      
+      // Récupérer tous les membres de la famille
+      const { data, error: familyError } = await supabase
+        .from('guests')
+        .select('*')
+        .eq('family_group_id', guest.family_group_id);
+      
+      if (familyError) {
+        console.error('Erreur famille Supabase:', familyError);
+        setFamilyError(`Erreur: ${familyError.message}`);
+        return;
       }
+      
+      console.log('Membres de la famille:', data);
+      setFamily(data || []);
+      
     } catch (err) {
-      setFamilyError('Erreur réseau.');
+      console.error('Erreur famille:', err);
+      setFamilyError('Erreur lors du chargement de la famille.');
     } finally {
       setLoadingFamily(false);
     }
+  };
+
+  const handleRSVP = (memberId: number, status: 'present' | 'absent') => {
+    console.log(`Membre ${memberId}: ${status === 'present' ? 'Présent' : 'Absent'}`);
+    // Ici on pourra ajouter la logique pour sauvegarder en base de données
   };
 
   return (
@@ -94,6 +146,7 @@ const RSVP: React.FC = () => {
           </button>
           {error && <div className="text-red-500 mt-2">{error}</div>}
         </form>
+        
         {/* Résultats de recherche */}
         {hasSearched && !selectedGuest && (
           <div className="mt-6">
@@ -115,6 +168,7 @@ const RSVP: React.FC = () => {
             )}
           </div>
         )}
+        
         {/* Affichage de la famille */}
         {selectedGuest && (
           <div className="mt-8 text-left">
@@ -124,11 +178,28 @@ const RSVP: React.FC = () => {
             ) : familyError ? (
               <div className="text-red-500 text-center">{familyError}</div>
             ) : (
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {family.map((member: any) => (
-                  <li key={member.id} className="p-3 rounded bg-primary/5 border border-primary/10 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <span className="font-medium text-primary">{member.first_name} {member.last_name}</span>
-                    {/* Ici on ajoutera les options RSVP pour chaque membre à l'étape suivante */}
+                  <li key={member.id} className="p-4 rounded-lg bg-primary/5 border border-primary/10">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                      <span className="font-medium text-primary text-center sm:text-left">
+                        {member.first_name} {member.last_name}
+                      </span>
+                      <div className="flex gap-2 justify-center sm:justify-end">
+                        <button
+                          onClick={() => handleRSVP(member.id, 'present')}
+                          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition text-sm font-medium shadow-sm"
+                        >
+                          Présent
+                        </button>
+                        <button
+                          onClick={() => handleRSVP(member.id, 'absent')}
+                          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition text-sm font-medium shadow-sm"
+                        >
+                          Absent
+                        </button>
+                      </div>
+                    </div>
                   </li>
                 ))}
               </ul>

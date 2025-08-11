@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import OurStory from "./pages/OurStory";
 import Program from "./pages/Program";
-import RSVP from "./pages/RSVP";
+import RSVP from "./components/RSVP";
 import Gifts from "./pages/Gifts";
 import GalleryPage from "./pages/GalleryPage";
 import PracticalInfo from "./pages/PracticalInfo";
